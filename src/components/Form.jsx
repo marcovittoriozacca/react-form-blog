@@ -5,13 +5,16 @@ const Form = () => {
     //prevent the form from reloading the page on submit
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        setPosts((t) => [title, ...t]);
+        setTitle('');
     }
 
     // title state with setTitle
     const [title, setTitle] = useState('');
+    const [posts, setPosts] = useState([]);
 
-
-    return(
+    return(<>
         <form onClick={(e) => handleSubmit(e)}>
             {/* title input field */}
             <div className="flex items-center gap-x-5 p-5 bg-neutral-400">
@@ -20,9 +23,16 @@ const Form = () => {
             </div>
 
             <button type="submit">Create</button>
+
         </form>
 
-    )
+        <section className="flex flex-col gap-y-2">
+            {posts.map((t,i) => (
+                t != '' &&
+                <span key={`title-${i}`}>{t}</span>
+            ))}
+        </section>
+    </>)
 }
 
 export default Form;
