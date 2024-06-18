@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Delete from "./Delete";
+import List from "./List";
 
 const Form = () => {
 
@@ -24,18 +24,11 @@ const Form = () => {
             </div>
 
             <button type="submit">Create</button>
-
         </form>
 
-        <section className="flex flex-col gap-y-2">
-            {posts.map((t,i) => (
-                t != '' &&
-                <span key={`title-${i}`} className="flex items-center gap-x-2">
-                    {t}
-                    <Delete index={i} handleDelete={setPosts}/>
-                </span>
-            ))}
-        </section>
+
+        <List posts={posts} setPosts={setPosts}/>
+        
     </>)
 }
 
