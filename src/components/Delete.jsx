@@ -8,7 +8,7 @@ const Delete = ({index, handleDelete}) => {
 
     return(
         <button onClick={del}>
-            <DeleteBtn className="text-2xl text-red-700"/>
+            <DeleteBtn className="text-3xl text-red-700"/>
         </button>
     )
 

@@ -6,9 +6,13 @@ const Form = () => {
     //prevent the form from reloading the page on submit
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        setPosts((t) => [title, ...t]);
-        setTitle('');
+    }
+    
+    const createPost = () => {
+        if(title !== ''){
+            setPosts((t) => [title, ...t]);
+            setTitle('');
+        }
     }
 
     // title state with setTitle
@@ -16,14 +20,14 @@ const Form = () => {
     const [posts, setPosts] = useState([]);
 
     return(<>
-        <form onClick={(e) => handleSubmit(e)}>
+        <form className="formStyle" onSubmit={handleSubmit}>
             {/* title input field */}
-            <div className="flex items-center gap-x-5 p-5 bg-neutral-400">
-                <label htmlFor="title">Title</label>
+            <div className="titleWrapper">
+                <label htmlFor="title" id="titleLabel">Title</label>
                 <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
             </div>
 
-            <button type="submit">Create</button>
+            <button type="submit" className="createBtn" onClick={createPost}>Create</button>
         </form>
 
 
